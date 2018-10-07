@@ -9,7 +9,7 @@ contract Lottery is usingOraclize, ERC20  {
    
     uint constant minBet = 0.1 ether;
     uint constant fee = 100; // 100% = 10000
-    uint constant roundDuration = 120;
+    uint constant roundDuration = 86400;
     
     bool isTest = false; // Для отладки в JavaScript VM
     
