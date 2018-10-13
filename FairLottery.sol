@@ -1,6 +1,6 @@
 pragma solidity ^0.4.25;
 
-import "./oraclizeAPI.sol";
+import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
 
 library SafeMath {
 
