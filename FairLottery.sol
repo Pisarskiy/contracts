@@ -1,9 +1,51 @@
 pragma solidity ^0.4.25;
 
 import "./oraclizeAPI.sol";
-import "./ERC20.sol";
 
-contract Lottery is usingOraclize, ERC20  {
+library SafeMath {
+
+  function mul(uint256 _a, uint256 _b) internal pure returns (uint256) {
+   
+    if (_a == 0) {
+      return 0;
+    }
+
+    uint256 c = _a * _b;
+    require(c / _a == _b);
+
+    return c;
+  }
+
+  function div(uint256 _a, uint256 _b) internal pure returns (uint256) {
+    require(_b > 0); // Solidity only automatically asserts when dividing by 0
+    uint256 c = _a / _b;
+    // assert(_a == _b * c + _a % _b); // There is no case in which this doesn't hold
+
+    return c;
+  }
+
+  function sub(uint256 _a, uint256 _b) internal pure returns (uint256) {
+    require(_b <= _a);
+    uint256 c = _a - _b;
+
+    return c;
+  }
+
+  function add(uint256 _a, uint256 _b) internal pure returns (uint256) {
+    uint256 c = _a + _b;
+    require(c >= _a);
+
+    return c;
+  }
+
+  function mod(uint256 a, uint256 b) internal pure returns (uint256) {
+    require(b != 0);
+    return a % b;
+  }
+  
+}
+
+contract Lottery is usingOraclize {
    
     using SafeMath for uint;
    
@@ -378,7 +420,7 @@ contract Lottery is usingOraclize, ERC20  {
 
 }
 
-contract Ticket is ERC20 {
+contract Ticket {
     
     Lottery public lottery;
     
@@ -420,6 +462,3 @@ contract Ticket is ERC20 {
     }
     
 }
-
-
-
