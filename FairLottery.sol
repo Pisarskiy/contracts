@@ -45,6 +45,7 @@ library SafeMath {
   
 }
 
+
 contract Lottery is usingOraclize {
    
     using SafeMath for uint;
